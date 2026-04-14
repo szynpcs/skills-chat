@@ -8,7 +8,12 @@ set -e
 
 REPO="https://github.com/szynpcs/skills-chat.git"
 APP_DIR="/home/ubuntu/skills-chat"
-DASHSCOPE_API_KEY="sk-546f6b18b8744d54b89301882840fe70"
+
+# API Key 从环境变量读取（首次部署前在服务器上执行：export DASHSCOPE_API_KEY=sk-xxx）
+# 或者脚本运行时交互输入
+if [ -z "$DASHSCOPE_API_KEY" ]; then
+  read -rp "请输入 DASHSCOPE_API_KEY: " DASHSCOPE_API_KEY
+fi
 
 echo "======================================"
 echo " skills-chat 部署开始"
